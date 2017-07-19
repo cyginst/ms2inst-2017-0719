@@ -6,12 +6,13 @@ if "%1"=="SUBPROC" goto skip_init
 
 set MSYS2_NAME=ms2inst
 set MSYS2_BITS=32
-set MSYS2_PKGS=diffutils,man-db,procps,psmisc
+set MSYS2_PKGS=diffutils,procps,psmisc
 set MSYS2_PKGS=%MSYS2_PKGS%,tmux-git &:: THIS IS TMUX
 set MSYS2_PKGS=%MSYS2_PKGS%,vim      &:: THIS IS VIM
+set MSYS2_PKGS=%MSYS2_PKGS%,         &:: THIS IS EMPTY
 set MSYS2_USE_MINGW32=1
-set MSYS2_USE_MINGW64=0
-set MSYS2_USE_MSYS=0
+set MSYS2_USE_MINGW64=1
+set MSYS2_USE_MSYS=1
 set DT_ICONS=1
 ::set MSYS2_HOME=.
 ::set MSYS2_ASIS=1
@@ -49,17 +50,20 @@ if not exist "%MSYS2_ROOT%" (
     if exist "%MSYS2_ROOT%.tmp" rmdir /s /q "%MSYS2_ROOT%.tmp"
     .binaries\7z.exe x -y -o"%MSYS2_ROOT%.tmp" ".binaries\%MSYS2_SETUP%" && move "%MSYS2_ROOT%.tmp" "%MSYS2_ROOT%"
 )
+set HOME=%MSYS2_ROOT%
 set cmd="%MSYS2_ROOT%\usr\bin\bash.exe" -l -c "pacman --noconfirm -Fy"
 echo %cmd%
 %cmd%
 if not "%MSYS2_PKGS%"=="" (
   for %%a in ("%MSYS2_PKGS:,=" "%") do (
-      set MSYS2_PKG=%%~a
-      call :trim !MSYS2_PKG! MSYS2_PKG
+    set MSYS2_PKG=%%~a
+    call :trim !MSYS2_PKG! MSYS2_PKG
+    if not "!MSYS2_PKG!"=="" (
       echo [!MSYS2_PKG!]
       set cmd="%MSYS2_ROOT%\usr\bin\bash.exe" -l -c "pacman --noconfirm --needed -S !MSYS2_PKG!"
       echo !cmd!
       !cmd!
+    )
   )
 )
 cscript.exe //nologo //E:JScript "%~f0"
