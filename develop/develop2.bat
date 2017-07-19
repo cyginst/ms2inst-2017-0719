@@ -4,7 +4,7 @@ setlocal
 REM --- EDIT THIS PART(START) ---
 set MSYS2_NAME=develop2
 set MSYS2_BITS=32
-set MSYS2_PKGS=diffutils,man-db,procps,psmisc
+set MSYS2_PKGS=diffutils,procps,psmisc
 set MSYS2_PKGS=%MSYS2_PKGS%,tmux-git               &:: THIS IS TMUX
 set MSYS2_PKGS=%MSYS2_PKGS%,vim                    &:: THIS IS VIM
 set MSYS2_PKGS=%MSYS2_PKGS%,emacs,glib2,libhogweed &:: THIS IS EMACS

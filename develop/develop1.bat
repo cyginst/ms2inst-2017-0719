@@ -4,7 +4,7 @@ setlocal
 REM --- EDIT THIS PART(START) ---
 set MSYS2_NAME=develop1
 set MSYS2_BITS=32
-set MSYS2_PKGS=diffutils,man-db,procps,psmisc
+set MSYS2_PKGS=diffutils,procps,psmisc
 set MSYS2_USE_MINGW32=1
 ::set MSYS2_USE_MINGW64=1
 ::set MSYS2_USE_MSYS=1
