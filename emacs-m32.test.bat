@@ -1,5 +1,6 @@
 :: emacs-m32.test.bat
 :: emacs-m32.test.bat
+:: emacs-m32.test.bat
 setlocal
 
 set MSYS2_NAME=emacs-m32.test
