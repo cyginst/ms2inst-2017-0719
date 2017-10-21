@@ -1,4 +1,2 @@
 #!bash -uvx
-git config --global user.email "root@cygwin32"
-git config --global user.name "root@cygwin32"
-
+git remote set-url origin https://javacommons@github.com/javacommons/ms2inst-v1.git 
